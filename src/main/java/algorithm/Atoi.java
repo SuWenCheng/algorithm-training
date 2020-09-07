@@ -3,8 +3,6 @@ package algorithm;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 
-import java.math.BigDecimal;
-import java.math.BigInteger;
 
 /**
  * 请你来实现一个 atoi 函数，使其能将字符串转换成整数。
