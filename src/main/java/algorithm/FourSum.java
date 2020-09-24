@@ -91,32 +91,6 @@ public class FourSum {
         return res;
     }
 
-    public void dfs(int[] nums, int depth, int sum, List<List<Integer>> res, boolean[] bools, Deque<Integer> stack, int target) {
-        if (depth == 4) {
-            if (sum == target) {
-                res.add(new ArrayList<>(stack));
-            }
-            return;
-        }
-
-        for (int i = 0; i < nums.length; i ++) {
-            if (bools[i]) {
-                continue;
-            }
-            if (i > 0 && nums[i] == nums[i - 1] && bools[i - 1]) {
-                continue;
-            }
-            stack.push(nums[i]);
-            bools[i] = true;
-            sum += nums[i];
-            dfs(nums, depth + 1, sum, res, bools, stack, target);
-            stack.pop();
-            bools[i] = false;
-            sum -= nums[i];
-        }
-
-    }
-
     @Test
     public void test() {
         int[] nums = {1,-2,-5,-4,-3,3,3,5};
