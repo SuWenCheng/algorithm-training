@@ -2,7 +2,6 @@ package algorithm;
 
 import bean.ListNode;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
