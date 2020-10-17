@@ -48,13 +48,15 @@ public class CanPartition {
         for (int num : nums) {
             sum += num;
         }
+        // 如果数组和为奇数，则肯定不能分成两个和相等的数组
         if (sum % 2 != 0) {
             return false;
         }
         int target = sum / 2;
 
 
-        // dp[i][j]表示从数组的 [0, i] 这个子区间内挑选一些正整数，每个数只能用一次，使得这些数的和恰好等于 j
+        // dp[i][j]表示从数组的 [0, i] 这个子区间内挑选一些正整数，
+        // 每个数只能用一次，使得这些数的和恰好等于 j （改进为一维数组）
         boolean[] dp = new boolean[target + 1];
         dp[0] = true;
         for (int i = 1; i < len; i ++) {
