@@ -37,7 +37,7 @@ import org.junit.Test;
 public class CanPartition {
 
     /**
-     * 转换为 「0 - 1」 背包问题
+     * 转换为 「0 - 1」 背包问题 (动态规划)
      */
     public boolean canPartition(int[] nums) {
         int len = nums.length;
