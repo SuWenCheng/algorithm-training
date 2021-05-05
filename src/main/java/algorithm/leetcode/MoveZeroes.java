@@ -43,6 +43,18 @@ public class MoveZeroes {
 
     }
 
+    public void moveZeroes2(int[] nums) {
+        int slow = 0, fast = 0;
+        for (; fast < nums.length; fast ++) {
+            if (nums[fast] != 0) {
+                nums[slow ++] = nums[fast];
+            }
+        }
+        while (slow < nums.length) {
+            nums[slow++] = 0;
+        }
+    }
+
     @Test
     public void test() {
         int[] nums = {0,1,0,3,12};
