@@ -100,7 +100,7 @@ public class SinglyLinkedList {
         System.out.println();
     }
 
-    private class Node {
+    private static class Node {
         private final int data;
         private Node next;
 
