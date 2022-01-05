@@ -1,6 +1,6 @@
 package algorithm.leetcode;
 
-import bean.ListNode;
+import bean.LinkedListNode;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import utils.BeanUtil;
@@ -30,14 +30,14 @@ import java.util.List;
 @Slf4j
 public class Palindrome {
 
-    public boolean isPalindrome(ListNode head) {
+    public boolean isPalindrome(LinkedListNode head) {
         if (head == null) {
             return true;
         }
         List<Integer> arrs = new ArrayList<>();
-        ListNode root = head;
+        LinkedListNode root = head;
         while (root != null) {
-            arrs.add(root.val);
+            arrs.add(root.data);
             root = root.next;
         }
         int size = arrs.size();
@@ -59,17 +59,17 @@ public class Palindrome {
      * 3.对比
      * 空间复杂度：O(1) 时间复杂度：O(N)
      */
-    public boolean isPalindrome2(ListNode head) {
+    public boolean isPalindrome2(LinkedListNode head) {
         if (head == null || head.next == null) {
             return true;
         }
 
-        ListNode middle = getMiddle(head);
-        ListNode revSecHalf = reverseNodes(middle.next);
-        ListNode firstHalf = head;
-        ListNode secondHalf = revSecHalf;
+        LinkedListNode middle = getMiddle(head);
+        LinkedListNode revSecHalf = reverseNodes(middle.next);
+        LinkedListNode firstHalf = head;
+        LinkedListNode secondHalf = revSecHalf;
         while (secondHalf != null) {
-            if (firstHalf.val != secondHalf.val) {
+            if (firstHalf.data != secondHalf.data) {
                 return false;
             }
             firstHalf = firstHalf.next;
@@ -78,8 +78,8 @@ public class Palindrome {
         return true;
     }
 
-    private ListNode getMiddle(ListNode head) {
-        ListNode slow = head, fast = head;
+    private LinkedListNode getMiddle(LinkedListNode head) {
+        LinkedListNode slow = head, fast = head;
         while (fast.next != null && fast.next.next != null) {
             slow = slow.next;
             fast = fast.next.next;
@@ -87,14 +87,14 @@ public class Palindrome {
         return slow;
     }
 
-    private ListNode reverseNodes(ListNode head) {
+    private LinkedListNode reverseNodes(LinkedListNode head) {
         if (head == null || head.next == null) {
             return head;
         }
-        ListNode point = head;
-        ListNode pre = null;
+        LinkedListNode point = head;
+        LinkedListNode pre = null;
         while (point != null) {
-            ListNode tmp = point.next;
+            LinkedListNode tmp = point.next;
             point.next = pre;
             pre = point;
             point = tmp;
@@ -105,8 +105,8 @@ public class Palindrome {
     @Test
     public void test() {
         int[] ints = {1, 2};
-        ListNode listNode = BeanUtil.generateListNode(ints);
-        log.info(isPalindrome2(listNode) + "");
+        LinkedListNode linkedListNode = BeanUtil.generateListNode(ints);
+        log.info(isPalindrome2(linkedListNode) + "");
     }
 
 }

@@ -2,6 +2,9 @@ package geekbang.linkedlist;
 
 /**
  * 判断回文链表
+ * 1.用快慢节点方法找到中心节点
+ * 2.反转前半部分链表
+ * 3.对比两个链表
  */
 public class SinglyLinkedList {
 

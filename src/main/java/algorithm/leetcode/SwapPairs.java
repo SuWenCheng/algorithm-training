@@ -1,6 +1,6 @@
 package algorithm.leetcode;
 
-import bean.ListNode;
+import bean.LinkedListNode;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import utils.BeanUtil;
@@ -25,26 +25,26 @@ import java.util.List;
 @Slf4j
 public class SwapPairs {
 
-    public ListNode swapPairs(ListNode head) {
+    public LinkedListNode swapPairs(LinkedListNode head) {
         if (head == null || head.next == null) {
             return head;
         }
-        ListNode first = head;
-        ListNode second = head.next;
+        LinkedListNode first = head;
+        LinkedListNode second = head.next;
         first.next = swapPairs(second.next);
         second.next = first;
         return second;
     }
 
-    public ListNode swapPairs2(ListNode head) {
+    public LinkedListNode swapPairs2(LinkedListNode head) {
         // If the list has no node or has only one node left.
         if ((head == null) || (head.next == null)) {
             return head;
         }
 
         // Nodes to be swapped
-        ListNode firstNode = head;
-        ListNode secondNode = head.next;
+        LinkedListNode firstNode = head;
+        LinkedListNode secondNode = head.next;
 
         // Swapping
         firstNode.next  = swapPairs(secondNode.next);
@@ -57,8 +57,8 @@ public class SwapPairs {
     @Test
     public void test() {
         int[] nodes = {1, 2, 3, 4, 5};
-        ListNode listNode = BeanUtil.generateListNode(nodes);
-        ListNode swap = swapPairs(listNode);
+        LinkedListNode linkedListNode = BeanUtil.generateListNode(nodes);
+        LinkedListNode swap = swapPairs(linkedListNode);
         List<Integer> res = swap.toList();
         log.info(JsonHelper.toJson(res));
     }

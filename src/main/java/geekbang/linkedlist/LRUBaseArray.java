@@ -6,7 +6,7 @@ import java.util.Map;
 import java.util.Scanner;
 
 /**
- * LRU数组
+ * 用数组实现LRU缓存淘汰算法
  */
 public class LRUBaseArray<T> {
 
@@ -40,10 +40,8 @@ public class LRUBaseArray<T> {
             if (isFull()) {
                 T tail = value[--count];
                 indexMap.remove(tail);
-                cache(data, count);
-            } else {
-                cache(data, count);
             }
+            cache(data, count);
             count++;
         } else {
             cache(data, index);

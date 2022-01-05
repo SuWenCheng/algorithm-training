@@ -1,6 +1,6 @@
 package algorithm.leetcode;
 
-import bean.ListNode;
+import bean.LinkedListNode;
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -53,14 +53,14 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class GetIntersectionNode {
 
-    public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
+    public LinkedListNode getIntersectionNode(LinkedListNode headA, LinkedListNode headB) {
         if (headA == null || headB == null) {
             return null;
         }
         int lengthA = 0;
         int lengthB = 0;
-        ListNode rootA = headA;
-        ListNode rootB = headB;
+        LinkedListNode rootA = headA;
+        LinkedListNode rootB = headB;
         while (rootA != null) {
             lengthA ++;
             rootA = rootA.next;
@@ -71,8 +71,8 @@ public class GetIntersectionNode {
         }
 
         int diff = Math.abs(lengthA - lengthB);
-        ListNode max;
-        ListNode min;
+        LinkedListNode max;
+        LinkedListNode min;
         if (lengthA > lengthB) {
             max = headA;
             min = headB;

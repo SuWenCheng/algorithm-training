@@ -1,6 +1,6 @@
 package algorithm.leetcode;
 
-import bean.ListNode;
+import bean.LinkedListNode;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -28,19 +28,19 @@ import java.util.List;
  */
 public class RemoveNthFromEnd {
 
-    public ListNode removeNthFromEnd(ListNode head, int n) {
-        List<ListNode> arrys = new LinkedList<>();
-        ListNode dummy = new ListNode(0);
+    public LinkedListNode removeNthFromEnd(LinkedListNode head, int n) {
+        List<LinkedListNode> arrys = new LinkedList<>();
+        LinkedListNode dummy = new LinkedListNode(0);
         dummy.next = head;
         arrys.add(dummy);
-        ListNode tmp = head;
+        LinkedListNode tmp = head;
         while (tmp != null) {
             arrys.add(tmp);
             tmp = tmp.next;
         }
         int size = arrys.size();
         int rmIndex = size - n;
-        ListNode before = arrys.get(rmIndex - 1);
+        LinkedListNode before = arrys.get(rmIndex - 1);
         before.next = before.next.next;
         return dummy.next;
     }
@@ -48,11 +48,11 @@ public class RemoveNthFromEnd {
     /**
      * 优化
      */
-    public ListNode removeNthFromEnd2(ListNode head, int n) {
-        ListNode dummy = new ListNode(0);
+    public LinkedListNode removeNthFromEnd2(LinkedListNode head, int n) {
+        LinkedListNode dummy = new LinkedListNode(0);
         dummy.next = head;
-        ListNode first = dummy;
-        ListNode second = dummy;
+        LinkedListNode first = dummy;
+        LinkedListNode second = dummy;
         for (int i = 1; i <= n + 1; i ++) {
             first = first.next;
         }

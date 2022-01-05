@@ -1,6 +1,6 @@
 package algorithm.leetcode;
 
-import bean.ListNode;
+import bean.LinkedListNode;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import utils.BeanUtil;
@@ -33,26 +33,26 @@ public class ReorderList {
      * 2. 反转后半部链表
      * 3. 把反转后的链表逐一插入前半链表
      */
-    public void reorderList(ListNode head) {
+    public void reorderList(LinkedListNode head) {
         if (head == null || head.next == null || head.next.next == null) {
             return;
         }
 
-        ListNode fast = head;
-        ListNode slow = head;
+        LinkedListNode fast = head;
+        LinkedListNode slow = head;
         while (fast.next != null && fast.next.next != null) {
             slow = slow.next;
             fast = fast.next.next;
         }
-        ListNode newNode = slow.next;
+        LinkedListNode newNode = slow.next;
         slow.next = null;
         // 反转后半链表
         newNode = reverseList(newNode);
-        ListNode root = head;
+        LinkedListNode root = head;
         while (newNode != null) {
-            ListNode rootTmp = root.next;
+            LinkedListNode rootTmp = root.next;
             root.next = newNode;
-            ListNode newTmp = newNode.next;
+            LinkedListNode newTmp = newNode.next;
             newNode.next = rootTmp;
             root = rootTmp;
             newNode = newTmp;
@@ -62,15 +62,15 @@ public class ReorderList {
     /**
      * 反转链表
      */
-    private ListNode reverseList(ListNode head) {
+    private LinkedListNode reverseList(LinkedListNode head) {
         if (head == null || head.next == null) {
             return head;
         }
-        ListNode tail = head;
+        LinkedListNode tail = head;
         head = head.next;
         tail.next = null;
         while (head != null) {
-            ListNode tmp = head.next;
+            LinkedListNode tmp = head.next;
             head.next = tail;
             tail = head;
             head = tmp;
@@ -81,9 +81,9 @@ public class ReorderList {
     @Test
     public void test() {
         int[] arrs = {1, 2, 3, 4, 5};
-        ListNode listNode = BeanUtil.generateListNode(arrs);
-        reorderList(listNode);
-        log.info(JsonHelper.toJson(listNode.toList()));
+        LinkedListNode linkedListNode = BeanUtil.generateListNode(arrs);
+        reorderList(linkedListNode);
+        log.info(JsonHelper.toJson(linkedListNode.toList()));
     }
 
 }

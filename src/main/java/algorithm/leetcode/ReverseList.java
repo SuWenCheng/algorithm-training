@@ -1,6 +1,6 @@
 package algorithm.leetcode;
 
-import bean.ListNode;
+import bean.LinkedListNode;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import utils.BeanUtil;
@@ -23,11 +23,11 @@ import utils.JsonHelper;
 @Slf4j
 public class ReverseList {
 
-    public ListNode reverseList(ListNode head) {
-        ListNode pre = null;
-        ListNode cur = head;
+    public LinkedListNode reverseList(LinkedListNode head) {
+        LinkedListNode pre = null;
+        LinkedListNode cur = head;
         while (cur != null) {
-            ListNode next = cur.next;
+            LinkedListNode next = cur.next;
             cur.next = pre;
             pre = cur;
             cur = next;
@@ -38,9 +38,9 @@ public class ReverseList {
     @Test
     public void test() {
         int[] nodes = {1,2,3,4,5};
-        ListNode listNode = BeanUtil.generateListNode(nodes);
-        String before = JsonHelper.toJson(listNode.toList());
-        ListNode reverseList = reverseList(listNode);
+        LinkedListNode linkedListNode = BeanUtil.generateListNode(nodes);
+        String before = JsonHelper.toJson(linkedListNode.toList());
+        LinkedListNode reverseList = reverseList(linkedListNode);
         String after = JsonHelper.toJson(reverseList.toList());
         log.info("before: " + before);
         log.info("after: " + after);

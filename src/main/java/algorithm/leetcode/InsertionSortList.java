@@ -1,6 +1,6 @@
 package algorithm.leetcode;
 
-import bean.ListNode;
+import bean.LinkedListNode;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import utils.BeanUtil;
@@ -40,19 +40,19 @@ public class InsertionSortList {
     /**
      * 空（哑）节点
      */
-    public ListNode insertionSortList(ListNode head) {
+    public LinkedListNode insertionSortList(LinkedListNode head) {
         if (head == null || head.next == null) {
             return head;
         }
-        ListNode dummyNode = new ListNode(0);
+        LinkedListNode dummyNode = new LinkedListNode(0);
         dummyNode.next = head;
-        ListNode lastSorted = head, curr = head.next;
+        LinkedListNode lastSorted = head, curr = head.next;
         while (curr != null) {
-            if (lastSorted.val <= curr.val) {
+            if (lastSorted.data <= curr.data) {
                 lastSorted = curr;
             } else {
-                ListNode prev = dummyNode;
-                while (prev.next.val <= curr.val) {
+                LinkedListNode prev = dummyNode;
+                while (prev.next.data <= curr.data) {
                     prev = prev.next;
                 }
                 lastSorted.next = curr.next;
@@ -67,8 +67,8 @@ public class InsertionSortList {
     @Test
     public void test() {
         int[] nodes = {6, 5, 3, 1, 8, 7, 2, 4};
-        ListNode listNode = BeanUtil.generateListNode(nodes);
-        ListNode result = insertionSortList(listNode);
+        LinkedListNode linkedListNode = BeanUtil.generateListNode(nodes);
+        LinkedListNode result = insertionSortList(linkedListNode);
         log.info(JsonHelper.toJson(result.toList()));
     }
 

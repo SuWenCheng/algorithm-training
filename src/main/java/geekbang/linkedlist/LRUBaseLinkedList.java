@@ -4,6 +4,9 @@ package geekbang.linkedlist;
 
 import java.util.Scanner;
 
+/**
+ * 用链表实现LRU缓存淘汰算法
+ */
 public class LRUBaseLinkedList<T> {
 
     /**
@@ -42,13 +45,12 @@ public class LRUBaseLinkedList<T> {
         SNode<T> preNode = findPreNode(data);
         if (preNode != null) {
             deleteNextNode(preNode);
-            insertNodeAtHead(data);
         } else {
             if (length >= capacity) {
                 deleteTailNode();
             }
-            insertNodeAtHead(data);
         }
+        insertNodeAtHead(data);
     }
 
     private void deleteTailNode() {
@@ -70,7 +72,6 @@ public class LRUBaseLinkedList<T> {
     private void deleteNextNode(SNode<T> preNode) {
         SNode<T> curNode = preNode.getNext();
         preNode.setNext(curNode.getNext());
-        curNode = null;
         length--;
     }
 

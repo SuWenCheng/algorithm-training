@@ -1,24 +1,36 @@
 package utils;
 
-import bean.ListNode;
+import bean.LinkedListNode;
 
 /**
  * 工具类
  */
 public class BeanUtil {
 
-    public static ListNode generateListNode(int[] nodes) {
+    public static LinkedListNode generateListNode(int[] nodes) {
         if (nodes == null || nodes.length == 0) {
             return null;
         }
-        ListNode head = new ListNode(nodes[0]);
-        ListNode end = head;
+        LinkedListNode head = new LinkedListNode(nodes[0]);
+        LinkedListNode end = head;
         for (int i = 1; i < nodes.length; i ++) {
-            ListNode temp = new ListNode(nodes[i]);
+            LinkedListNode temp = new LinkedListNode(nodes[i]);
             end.next = temp;
             end = temp;
         }
         return head;
+    }
+
+    /**
+     * 打印链表
+     */
+    public static void printLinkedListNode(LinkedListNode linkedListNode) {
+        LinkedListNode n = linkedListNode;
+        while (n != null) {
+            System.out.print(n.data + " ");
+            n = n.next;
+        }
+        System.out.println();
     }
 
 }

@@ -8,20 +8,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
+ * 链表
  */
 @AllArgsConstructor
 @NoArgsConstructor
-public class ListNode {
-    public int val;
-    public ListNode next;
-    public ListNode(int x) { val = x; }
+public class LinkedListNode {
+    public int data;
+    public LinkedListNode next;
+    public LinkedListNode(int x) { data = x; }
 
     public List<Integer> toList() {
         List<Integer> res = new ArrayList<>();
-        ListNode root = this;
+        LinkedListNode root = this;
         while (root != null) {
-            res.add(root.val);
+            res.add(root.data);
             root = root.next;
         }
         return res;

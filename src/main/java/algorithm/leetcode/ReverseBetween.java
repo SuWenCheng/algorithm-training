@@ -1,6 +1,6 @@
 package algorithm.leetcode;
 
-import bean.ListNode;
+import bean.LinkedListNode;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import utils.BeanUtil;
@@ -18,19 +18,19 @@ import utils.JsonHelper;
 @Slf4j
 public class ReverseBetween {
 
-    public ListNode reverseBetween(ListNode head, int left, int right) {
+    public LinkedListNode reverseBetween(LinkedListNode head, int left, int right) {
         if (left == right) {
             return head;
         }
-        ListNode pre = new ListNode();
+        LinkedListNode pre = new LinkedListNode();
         pre.next = head;
         // left前一个节点
-        ListNode preLeft = null;
+        LinkedListNode preLeft = null;
         // left节点
-        ListNode leftNode = null;
+        LinkedListNode leftNode = null;
         // right节点
-        ListNode rightNode = null;
-        ListNode cur = pre;
+        LinkedListNode rightNode = null;
+        LinkedListNode cur = pre;
         for (int i = 0; i <= right; i++) {
             if (i == left - 1) {
                 preLeft = cur;
@@ -43,7 +43,7 @@ public class ReverseBetween {
         }
 
         // right节点后一个节点
-        ListNode after = rightNode.next;
+        LinkedListNode after = rightNode.next;
         // 截断链表
         rightNode.next = null;
         reverse(preLeft.next);
@@ -52,11 +52,11 @@ public class ReverseBetween {
         return pre.next;
     }
 
-    private void reverse(ListNode head) {
-        ListNode pre = null;
-        ListNode cur = head;
+    private void reverse(LinkedListNode head) {
+        LinkedListNode pre = null;
+        LinkedListNode cur = head;
         while (cur != null) {
-            ListNode next = cur.next;
+            LinkedListNode next = cur.next;
             cur.next = pre;
             pre = cur;
             cur = next;
@@ -66,9 +66,9 @@ public class ReverseBetween {
     @Test
     public void test() {
         int[] nodes = {1,2,3,4,5,6};
-        ListNode listNode = BeanUtil.generateListNode(nodes);
-        String before = JsonHelper.toJson(listNode.toList());
-        ListNode reverseList = reverseBetween(listNode, 2, 5);
+        LinkedListNode linkedListNode = BeanUtil.generateListNode(nodes);
+        String before = JsonHelper.toJson(linkedListNode.toList());
+        LinkedListNode reverseList = reverseBetween(linkedListNode, 2, 5);
         String after = JsonHelper.toJson(reverseList.toList());
         log.info("before: " + before);
         log.info("after: " + after);
