@@ -4,6 +4,7 @@ import utils.JsonHelper;
 
 /**
  * 冒泡排序（递增）
+ * 时间复杂度（O²），稳定排序
  */
 public class BubbleSort {
 
