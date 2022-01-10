@@ -5,6 +5,7 @@ import utils.JsonHelper;
 /**
  * 归并排序
  * 原理：分治思想
+ * 时间复杂度：O(nlogn)
  */
 public class MergeSort {
 
@@ -37,7 +38,8 @@ public class MergeSort {
         int q = (r + p) / 2;
         doMergeSort(a, p, q);
         doMergeSort(a, q + 1, r);
-        merge(a, p, q, r);
+        //merge(a, p, q, r);
+        mergeBySentry(a, p, q, r);
     }
 
     /**
@@ -68,5 +70,34 @@ public class MergeSort {
         if (tmp.length >= 0) {
             System.arraycopy(tmp, 0, a, p, tmp.length);
         }
+    }
+
+    /**
+     * 合并数组（哨兵）
+     */
+    private void mergeBySentry(int[] arr, int p, int q, int r) {
+        int[] leftArr = new int[q - p + 2];
+        int[] rightArr = new int[r - q + 1];
+
+        for (int i = p; i <= q; i++) {
+            leftArr[i - p] = arr[i];
+        }
+        leftArr[q - p + 1] = Integer.MAX_VALUE;
+
+        for (int i = q + 1; i <= r; i++) {
+            rightArr[i - q - 1] = arr[i];
+        }
+        rightArr[r - q] = Integer.MAX_VALUE;
+
+        int k = p;
+        int i = 0, j = 0;
+        while (k <= r) {
+            if (leftArr[i] <= rightArr[j]) {
+                arr[k++] = leftArr[i++];
+            } else {
+                arr[k++] = rightArr[j++];
+            }
+        }
+
     }
 }
