@@ -47,7 +47,7 @@ public class MergeSort {
         int[] tmp = new int[r - p + 1];
         int i = p, j = q + 1, k = 0;
         while (i <= q && j <= r) {
-            if (a[i] < a[j]) {
+            if (a[i] <= a[j]) {
                 tmp[k++] = a[i++];
             } else {
                 tmp[k++] = a[j++];
