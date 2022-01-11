@@ -6,6 +6,9 @@ import utils.JsonHelper;
  * 归并排序
  * 原理：分治思想
  * 时间复杂度：O(nlogn)
+ * 1.把数组从中间分成前后两部分
+ * 2.对前后两部分分别排序
+ * 3.将排好序的两部分合并在一起
  */
 public class MergeSort {
 
