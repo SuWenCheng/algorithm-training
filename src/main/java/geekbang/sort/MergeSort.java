@@ -41,8 +41,8 @@ public class MergeSort {
         int q = (r + p) / 2;
         doMergeSort(a, p, q);
         doMergeSort(a, q + 1, r);
-        //merge(a, p, q, r);
-        mergeBySentry(a, p, q, r);
+        merge(a, p, q, r);
+        //mergeBySentry(a, p, q, r);
     }
 
     /**
