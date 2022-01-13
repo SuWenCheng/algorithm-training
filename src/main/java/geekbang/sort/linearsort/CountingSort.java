@@ -10,12 +10,11 @@ public class CountingSort {
 
     public static void main(String[] args) {
         int[] a = {4, 5, 6, 3, 2, 1, 0, 3, 2, 1};
-        CountingSort cs = new CountingSort();
-        cs.countingSort(a, a.length);
+        countingSort(a, a.length);
         System.out.println(JsonHelper.toJson(a));
     }
 
-    public void countingSort(int[] a, int n) {
+    public static void countingSort(int[] a, int n) {
         if (n <= 1) {
             return;
         }

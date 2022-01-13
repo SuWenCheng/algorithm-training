@@ -14,8 +14,7 @@ public class MergeSort {
 
     public static void main(String[] args) {
         int[] a = {4, 5, 6, 3, 2, 1};
-        MergeSort mergeSort = new MergeSort();
-        mergeSort.mergeSort(a, a.length);
+        mergeSort(a, a.length);
         System.out.println(JsonHelper.toJson(a));
     }
 
@@ -24,7 +23,7 @@ public class MergeSort {
      * @param a 待排序数组
      * @param n 数组长度
      */
-    public void mergeSort(int[] a, int n) {
+    public static void mergeSort(int[] a, int n) {
         doMergeSort(a, 0, n - 1);
     }
 
@@ -34,7 +33,7 @@ public class MergeSort {
      * @param p 待排序数组开始下标
      * @param r 待排序数组结束下标
      */
-    public void doMergeSort(int[] a, int p, int r) {
+    private static void doMergeSort(int[] a, int p, int r) {
         if (p >= r) {
             return;
         }
@@ -48,7 +47,7 @@ public class MergeSort {
     /**
      * 合并数组
      */
-    private void merge(int[] a, int p, int q, int r) {
+    private static void merge(int[] a, int p, int q, int r) {
         int[] tmp = new int[r - p + 1];
         int i = p, j = q + 1, k = 0;
         while (i <= q && j <= r) {
@@ -78,7 +77,7 @@ public class MergeSort {
     /**
      * 合并数组（哨兵）
      */
-    private void mergeBySentry(int[] arr, int p, int q, int r) {
+    private static void mergeBySentry(int[] arr, int p, int q, int r) {
         int[] leftArr = new int[q - p + 2];
         int[] rightArr = new int[r - q + 1];
 

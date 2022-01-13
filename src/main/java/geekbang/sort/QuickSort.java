@@ -13,17 +13,16 @@ import utils.JsonHelper;
 public class QuickSort {
 
     public static void main(String[] args) {
-        QuickSort qs = new QuickSort();
         int[] a = {4, 5, 6, 3, 2, 1};
-        qs.quickSort(a, a.length);
+        quickSort(a, a.length);
         System.out.println(JsonHelper.toJson(a));
     }
 
-    public void quickSort(int[] a, int n) {
+    public static void quickSort(int[] a, int n) {
         doQuickSort(a, 0, n - 1);
     }
 
-    private void doQuickSort(int[] a, int p, int r) {
+    private static void doQuickSort(int[] a, int p, int r) {
         if (p >= r) {
             return;
         }
@@ -33,7 +32,7 @@ public class QuickSort {
         doQuickSort(a, q + 1, r);
     }
 
-    private int partition(int[] a, int p, int r) {
+    private static int partition(int[] a, int p, int r) {
         int pivot = a[r];
         int i = p, j = p;
         while (j < r) {
