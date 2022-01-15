@@ -54,4 +54,112 @@ public class BinarySearch {
         }
         return result;
     }
+
+    /**
+     * 二分查找变形1：查找第一个值等于给定值的元素
+     * @param a 有序数组
+     * @param value 目标值
+     * @return 目标元素索引位置
+     */
+    public int BinarySearch1(int[] a, int value) {
+        int low = 0;
+        int high = a.length - 1;
+
+        while (low <= high) {
+            int mid = low + (high - low) / 2;
+            if (a[mid] > value) {
+                high = mid - 1;
+            } else if (a[mid] < value) {
+                low = mid + 1;
+            } else {
+                if (mid == 0 || a[mid - 1] != value) {
+                    return mid;
+                }
+                high = mid - 1;
+            }
+        }
+
+        return -1;
+    }
+
+    /**
+     * 二分查找变形2：查找最后一个值等于给定值的元素
+     * @param a 有序数组
+     * @param value 目标值
+     * @return 目标元素索引位置
+     */
+    public int BinarySearch2(int[] a, int value) {
+        int len = a.length;
+        int low = 0;
+        int high = len - 1;
+
+        while (low <= high) {
+            int mid = low + (high - low) / 2;
+            if (a[mid] > value) {
+                high = mid - 1;
+            } else if (a[mid] < value) {
+                low = mid + 1;
+            } else {
+                if (mid == len - 1 || a[mid + 1] != value) {
+                    return mid;
+                }
+                low = mid + 1;
+            }
+        }
+
+        return -1;
+    }
+
+    /**
+     * 二分查找变形3：查找第一个大于等于给定值的元素
+     * @param a 有序数组
+     * @param value 目标值
+     * @return 目标元素索引位置
+     */
+    public int BinarySearch3(int[] a, int value) {
+        int len = a.length;
+        int low = 0;
+        int high = len - 1;
+
+        while (low <= high) {
+            int mid = low + (high - low) / 2;
+            if (a[mid] < value) {
+                low = mid + 1;
+            } else {
+                if (mid == 0 || a[mid - 1] < value) {
+                    return mid;
+                }
+                high = mid - 1;
+            }
+        }
+
+        return -1;
+    }
+
+    /**
+     * 二分查找变形4：查找最后一个小于等于给定值的元素
+     * @param a 有序数组
+     * @param value 目标值
+     * @return 目标元素索引位置
+     */
+    public int BinarySearch4(int[] a, int value) {
+        int len = a.length;
+        int low = 0;
+        int high = len - 1;
+
+        while (low <= high) {
+            int mid = low + (high - low) / 2;
+            if (a[mid] > value) {
+                high = mid - 1;
+            } else {
+                if (mid == len - 1 || a[mid + 1] > value) {
+                    return mid;
+                }
+                low = mid + 1;
+            }
+        }
+
+        return -1;
+    }
+
 }
