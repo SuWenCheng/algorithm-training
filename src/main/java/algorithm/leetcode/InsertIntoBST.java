@@ -60,7 +60,7 @@ public class InsertIntoBST {
         TreeNode newNode = new TreeNode(val);
         while (currNode != null) {
             TreeNode preNode = currNode;
-            while (currNode != null && currNode.val > val) {
+            while (currNode != null && currNode.data > val) {
                 preNode = currNode;
                 currNode = currNode.left;
             }
@@ -68,7 +68,7 @@ public class InsertIntoBST {
                 preNode.left = newNode;
                 return root;
             }
-            while (currNode != null && currNode.val < val) {
+            while (currNode != null && currNode.data < val) {
                 preNode = currNode;
                 currNode = currNode.right;
             }

@@ -41,15 +41,15 @@ public class LowestCommonAncestor {
         TreeNode rootNode = root;
         int largeVal;
         int smallVal;
-        if (p.val > q.val) {
-            largeVal = p.val;
-            smallVal = q.val;
+        if (p.data > q.data) {
+            largeVal = p.data;
+            smallVal = q.data;
         } else {
-            largeVal = q.val;
-            smallVal = p.val;
+            largeVal = q.data;
+            smallVal = p.data;
         }
         while (rootNode != null) {
-            int val = rootNode.val;
+            int val = rootNode.data;
             if (val >= smallVal && val <= largeVal) {
                 res = rootNode;
                 break;
@@ -69,9 +69,9 @@ public class LowestCommonAncestor {
     public TreeNode lowestCommonAncestor2(TreeNode root, TreeNode p, TreeNode q) {
         TreeNode res = root;
         while (true) {
-            if (res.val > p.val && res.val > q.val) {
+            if (res.data > p.data && res.data > q.data) {
                 res = res.left;
-            } else if (res.val < p.val && res.val < q.val) {
+            } else if (res.data < p.data && res.data < q.data) {
                 res = res.right;
             } else {
                 break;

@@ -52,7 +52,7 @@ public class IncreasingBST {
             return;
         }
         inorder(root.left, res);
-        res.add(root.val);
+        res.add(root.data);
         inorder(root.right, res);
     }
 }

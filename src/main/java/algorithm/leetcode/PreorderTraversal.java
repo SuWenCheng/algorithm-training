@@ -35,7 +35,7 @@ public class PreorderTraversal {
         Deque<TreeNode> stack = new ArrayDeque<>();
         while (head != null || !stack.isEmpty()) {
             while (head != null) {
-                res.add(head.val);
+                res.add(head.data);
                 if (head.right != null) {
                     stack.push(head.right);
                 }

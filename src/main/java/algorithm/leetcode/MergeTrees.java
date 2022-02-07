@@ -40,7 +40,7 @@ public class MergeTrees {
         if (t2 == null) {
             return t1;
         }
-        TreeNode res = new TreeNode(t1.val + t2.val);
+        TreeNode res = new TreeNode(t1.data + t2.data);
         res.left = mergeTrees(t1.left, t2.left);
         res.right = mergeTrees(t1.right, t2.right);
         return res;

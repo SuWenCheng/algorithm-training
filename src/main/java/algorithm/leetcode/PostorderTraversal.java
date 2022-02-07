@@ -46,7 +46,7 @@ public class PostorderTraversal {
             }
             node = stack.pop();
             if (node.right == null || node.right == pre) {
-                res.add(node.val);
+                res.add(node.data);
                 pre = node;
                 node = null;
             } else {
@@ -69,7 +69,7 @@ public class PostorderTraversal {
         }
         dfs(root.left, res);
         dfs(root.right, res);
-        res.add(root.val);
+        res.add(root.data);
     }
 
     @Test

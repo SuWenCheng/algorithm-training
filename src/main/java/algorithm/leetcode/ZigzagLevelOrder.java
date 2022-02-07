@@ -52,7 +52,7 @@ public class ZigzagLevelOrder {
             if (flag > 0) {
                 while (!stack1.isEmpty()) {
                     TreeNode pop = stack1.pop();
-                    list.add(pop.val);
+                    list.add(pop.data);
                     if (pop.left != null) {
                         stack2.push(pop.left);
                     }
@@ -64,7 +64,7 @@ public class ZigzagLevelOrder {
             } else {
                 while (!stack2.isEmpty()) {
                     TreeNode pop = stack2.pop();
-                    list.add(pop.val);
+                    list.add(pop.data);
                     if (pop.right != null) {
                         stack1.push(pop.right);
                     }

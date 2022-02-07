@@ -50,7 +50,7 @@ public class FindMode {
             return;
         }
         inorderTraversal(root.left);
-        int val = root.val;
+        int val = root.data;
         if (curr == val) {
             currCount ++;
         } else {

@@ -4,16 +4,16 @@ import lombok.Data;
 
 @Data
 public class TreeNode {
-    public int val;
+    public int data;
     public TreeNode left;
     public TreeNode right;
 
     public TreeNode(int x) {
-        val = x;
+        data = x;
     }
 
     public TreeNode(int val, TreeNode left, TreeNode right) {
-         this.val = val;
+         this.data = val;
          this.left = left;
          this.right = right;
      }
