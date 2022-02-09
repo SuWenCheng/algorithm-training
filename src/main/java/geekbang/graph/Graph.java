@@ -1,6 +1,8 @@
 package geekbang.graph;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Queue;
 
 /**
@@ -66,6 +68,54 @@ public class Graph {
     }
 
     /**
+     * 获取用户的n度好友（基于广度优先搜索）
+     * @param s 目标用户
+     * @param degree 好友度数
+     */
+    public List<Integer> lastestFriendBfs(int s, int degree) {
+        List<Integer> result = new ArrayList<>();
+
+        // 记录每个顶点与起始顶点的距离
+        int[] degrees = new int[v];
+
+        // 已被访问定顶点
+        boolean[] visited = new boolean[v];
+        visited[s] = true;
+
+        // 存储已经被访问、但相连的顶点还没有被访问的顶点
+        Queue<Integer> queue = new LinkedList<>();
+        queue.add(s);
+
+        // 记录总共遍历的次数
+        int cycleNum = 0;
+
+        while (queue.size() > 0) {
+            Integer cur = queue.poll();
+            // 顶点离起始顶点距离超过 3 时则退出
+            if (degrees[cur] == degree) {
+                break;
+            }
+            for (int i = 0; i < adj[cur].size(); i++) {
+                int child = adj[cur].get(i);
+                if (!visited[child]) {
+                    System.out.println(child);
+                    queue.add(child);
+                    visited[child] = true;
+                    degrees[child] = degrees[cur] + 1;
+                    if (degrees[child] == degree) {
+                        result.add(child);
+                    }
+                    cycleNum ++;
+                }
+            }
+        }
+
+        System.out.println("广度优先搜索" + degree + "度好友关系一共遍历的次数：" + cycleNum);
+
+        return result;
+    }
+
+    /**
      * 深度优先搜索（从s到t的最短路径）
      * @param s 开始顶点的索引
      * @param t 结束顶点的索引
@@ -79,7 +129,8 @@ public class Graph {
         for (int i = 0; i < v; i++) {
             prev[i] = -1;
         }
-
+        doDfs(s, t, visited, prev);
+        print(prev, s, t);
     }
 
     private void doDfs(int s, int t, boolean[] visited, int[] prev) {
@@ -106,6 +157,28 @@ public class Graph {
             print(prev, s, prev[t]);
         }
         System.out.print(t + " ");
+    }
+
+    public static void main(String[] args) {
+        Graph graph = new Graph(10);
+        graph.addEdge(0,1);
+        graph.addEdge(0,2);
+        graph.addEdge(1,3);
+        graph.addEdge(1,4);
+        graph.addEdge(4,6);
+        graph.addEdge(2,3);
+        graph.addEdge(2,7);
+        graph.addEdge(2,8);
+        graph.addEdge(3,5);
+        graph.addEdge(3,6);
+        graph.addEdge(5,7);
+        graph.addEdge(5,6);
+//        graph.bfs(0,6);
+
+        // 深度优先
+        List<Integer> friendBfs = graph.lastestFriendBfs(0, 2);
+        System.out.println(friendBfs);
+
     }
 
 }
