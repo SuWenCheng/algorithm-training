@@ -115,12 +115,12 @@ public class Graph {
         return result;
     }
 
+    boolean found = false; // 当已经找到终止顶点 t 之后，就不再递归地继续查找
     /**
      * 深度优先搜索（从s到t的最短路径）
      * @param s 开始顶点的索引
      * @param t 结束顶点的索引
      */
-    boolean found = false; // 当已经找到终止顶点 t 之后，就不再递归地继续查找
     public void dfs(int s, int t) {
         if (s == t) return;
         found = false;
